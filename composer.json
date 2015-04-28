@@ -1,0 +1,27 @@
+{
+  "name": "antonienko/php-template-previewer",
+  "type": "library",
+  "description": "For designers testing their framework views without the working backend code.",
+  "keywords": ["framework", "template", "preview"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Antonio Manuel Hernández Sánchez"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "antonienko\\PhpTempPrev": "lib/"
+    }
+  },
+  "autoload-dev": {
+    "psr-0": { "antonienko\\tests\\": "tests/" }
+  },
+  "require": {
+    "php": ">=5.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0",
+    "phalcon/devtools": "dev-master"
+  }
+}
