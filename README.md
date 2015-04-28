@@ -1,5 +1,6 @@
-PHP Template Previewer
+PHP Template Previewer 
 ======================
+[![Build Status](https://api.shippable.com/projects/553f93e8edd7f2c052d5a0a9/badge?branchName=master)](https://app.shippable.com/projects/553f93e8edd7f2c052d5a0a9/builds/latest)
 
 PHP template _previewer_ for designers testing their framework views without the working backend code.
 
