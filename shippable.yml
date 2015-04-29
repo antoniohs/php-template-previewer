@@ -17,9 +17,7 @@ before_script:
   - mkdir -p shippable/testresults
   - if [ ! -d "cphalcon" ]; then git clone --depth=1 git://github.com/phalcon/cphalcon.git && cd cphalcon/build && ./install && cd ../.. && echo 'extension="phalcon.so"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi
   - /home/shippable/.phpenv/versions/5.6/composer/composer.phar self-update
-  - cd src
   - composer install --prefer-source --no-interaction
-  - cd ..
 
 script:
  - phpunit --log-junit shippable/testresults/junit.xml --coverage-html shippable/codecoverage --configuration phpunit.xml.dist
