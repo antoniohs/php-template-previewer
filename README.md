@@ -15,8 +15,7 @@ and tell me.
 
 ###Extending the framework support
 You can make a request for any framework that you want to use this library into, or even better, make a __pull request with your own framework strategy__.
-Use the files under the _FrameworkStrategies_ folder as an example.
-
+Use the files under the [FrameworkStrategies folder](./antonienko/PhpTempPrev/FrameworkStrategies) as an example.
 
 ##Installation
 ###Composer
