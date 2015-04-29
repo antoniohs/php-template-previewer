@@ -42,7 +42,7 @@ If you have any problems with the _minimum-stability_ setting try appending @dev
 
 ##Sample Usage
 ### Phalcon Framework
-_DesignController_ with an action _View_ that gets two parameters: `$controller` and `view`, which are the name of the controller and action view that you want to render.
+_DesignController_ with an action _View_ that gets two parameters: `$controller` and `$view`, which are the name of the controller and action view that you want to render.
 You would call the url like this: `http://localhost/designTest/view/controllername/viewname` but you are not restricted to use it in this way
 
 ```php
