@@ -6,12 +6,16 @@ __PHP template previewer__ for designers testing their framework views without t
 
 Originally created for a personal project using the Phalcon PHP framework and its templating system Volt.
 
-##Disclaimer:
+####Disclaimer:
 This is my first composer as well as open source project, so if you see anything that needs improving, don't hesitate
 and tell me.
 
 ##List of implemented frameworks
 * Phalcon
+
+###Extending the framework support
+You can make a request for any framework that you want to use this library into, or even better, make a __pull request with your own framework strategy__.
+Use the files under the _FrameworkStrategies_ folder as an example.
 
 
 ##Installation
@@ -32,6 +36,7 @@ Specific minor version, API stability
 ```
 
 ##Sample Usage on a Phalcon Controller used for design testing
+You would call the url like this: `http://localhost/designTest/view/controllername/viewname` but you are not restricted to use it in this way
 
 ```php
 namespace app\controllers;
