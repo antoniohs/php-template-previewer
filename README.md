@@ -40,7 +40,9 @@ If you have any problems with the _minimum-stability_ setting try appending @dev
 ```
 
 
-##Sample Usage on a Phalcon Controller used for design testing
+##Sample Usage
+### Phalcon Framework
+Design controller that gets two parameters: `$controller` and `view`, which are the name of the controller and action view that you want to render.
 You would call the url like this: `http://localhost/designTest/view/controllername/viewname` but you are not restricted to use it in this way
 
 ```php
@@ -59,6 +61,12 @@ class DesignTestController extends ControllerBase
     }
 }
 ```
+
+### Ini files
+You can pass a single .ini file holding your variables, or an array of files. In case of having the same variable defined in two of the .ini files, the last one will prevail.
+The variables are separated in three categories: _scalars_, _arrays_ and _objects_. _arrays_ and _objects_ are represented in json format.
+
+If you want to get an idea of how the .ini files work [take a look at the test fixtures](tests/antonienko/tests/fixtures).
 
 ##License Information
 Lincensed under __The MIT License (MIT)__. See the LICENSE file for more details.
