@@ -34,6 +34,12 @@ Specific minor version, API stability
 "antonienko/php-template-previewer": "0.1.*"
 ```
 
+If you have any problems with the _minimum-stability_ setting try appending @dev to the version
+```javascript
+"antonienko/php-template-previewer": "0.1.*@dev"
+```
+
+
 ##Sample Usage on a Phalcon Controller used for design testing
 You would call the url like this: `http://localhost/designTest/view/controllername/viewname` but you are not restricted to use it in this way
 
