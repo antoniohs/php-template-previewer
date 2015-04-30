@@ -8,9 +8,14 @@
  * @link http://opensource.org/licenses/MIT
  */
 
-namespace antonienko\PhpTempPrev\FrameworkStrategies;
+namespace antonienko\PhpTempPrev\FileStrategies;
 
-interface IFrameworkStrategy
+interface IFileStrategy
 {
-    public function renderView($viewName, $vars);
+    public function __construct(array $files);
+
+    /**
+     * @return array
+     */
+    public function extractVars();
 }

@@ -10,7 +10,7 @@
 
 namespace antonienko\PhpTempPrev;
 
-use antonienko\PhpTempPrev\Exceptions\InvalidIniFileException;
+use antonienko\PhpTempPrev\FileStrategies\IFileStrategy;
 use antonienko\PhpTempPrev\FrameworkStrategies\IFrameworkStrategy;
 
 class Previewer
@@ -24,27 +24,14 @@ class Previewer
 
     /**
      * @param mixed $viewName View name in a format that the strategy set in construction will understand
-     * @param string|array $iniFile Path and filename of the ini file(s) that values should be loaded from
+     * @param IFileStrategy $fileStrategy
      */
-    public function render($viewName, $iniFile = array())
+    public function render($viewName, IFileStrategy $fileStrategy = null)
     {
-        $vars = [];
-        $ini_files = is_array($iniFile) ? $iniFile : array($iniFile);
-
-        foreach ($ini_files as $ini_file) {
-            if(!file_exists($ini_file)) {
-                throw new InvalidIniFileException("File $ini_file doesn't exist");
-            }
-            $ini_file_contents = parse_ini_file($ini_file, true);
-            foreach ($ini_file_contents['scalars'] as $name => $value) {
-                $vars[$name] = $value;
-            }
-            foreach ($ini_file_contents['arrays'] as $name => $value) {
-                $vars[$name] = json_decode($value, true);
-            }
-            foreach ($ini_file_contents['objects'] as $name => $value) {
-                $vars[$name] = json_decode($value);
-            }
+        if ($fileStrategy) {
+            $vars = $fileStrategy->extractVars();
+        } else {
+            $vars = [];
         }
         $this->frameworkStrategy->renderView($viewName, $vars);
     }

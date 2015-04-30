@@ -8,9 +8,14 @@
  * @link http://opensource.org/licenses/MIT
  */
 
-namespace antonienko\PhpTempPrev\FrameworkStrategies;
+namespace antonienko\PhpTempPrev\FileStrategies;
 
-interface IFrameworkStrategy
+class BaseFileStrategy 
 {
-    public function renderView($viewName, $vars);
+    protected $files;
+    public function __construct(array $files)
+    {
+        $this->files = $files;
+    }
+
 }

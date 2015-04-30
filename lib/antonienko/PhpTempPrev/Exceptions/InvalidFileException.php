@@ -12,4 +12,4 @@ namespace antonienko\PhpTempPrev\Exceptions;
 
 use OutOfBoundsException;
 
-class InvalidIniFileException extends OutOfBoundsException{}
+class InvalidFileException extends OutOfBoundsException{}

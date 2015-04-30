@@ -21,7 +21,7 @@ class PhalconStrategy implements IFrameworkStrategy
         $this->view = $view;
     }
 
-    public function renderView ($viewName, array $vars)
+    public function renderView ($viewName, $vars)
     {
         foreach($vars as $name => $value) {
             $this->view->setVar($name, $value);

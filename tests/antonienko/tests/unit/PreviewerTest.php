@@ -1,6 +1,7 @@
 <?php
 namespace antonienko\PhpTempPrev\tests;
 
+use antonienko\PhpTempPrev\FileStrategies\IniFileStrategy;
 use antonienko\PhpTempPrev\Previewer;
 use antonienko\PhpTempPrev\FrameworkStrategies\IFrameworkStrategy;
 use stdClass;
@@ -29,7 +30,7 @@ class PreviewerTest extends \PHPUnit_Framework_TestCase
         $this->strategyDouble->expects($this->once())
             ->method('renderView')
             ->with($view_name, $expected_array_vars);
-        $this->sut->render($view_name, $ini_file);
+        $this->sut->render($view_name, new IniFileStrategy([$ini_file]));
     }
 
     public function test_render_withMoreThanOneIniFile_properCallToStrategy()
@@ -49,7 +50,7 @@ class PreviewerTest extends \PHPUnit_Framework_TestCase
         $this->strategyDouble->expects($this->once())
             ->method('renderView')
             ->with($view_name, $expected_vars);
-        $this->sut->render($view_name, [$ini_file1, $ini_file2]);
+        $this->sut->render($view_name, new IniFileStrategy([$ini_file1, $ini_file2]));
     }
 
     /**
@@ -73,8 +74,8 @@ class PreviewerTest extends \PHPUnit_Framework_TestCase
 
     public function test_render_calledWithAnInvalidIniFile_throw()
     {
-        $this->setExpectedException('\antonienko\PhpTempPrev\Exceptions\InvalidIniFileException');
-        $this->sut->render('sdkfdsj', 'nonExistingFile');
+        $this->setExpectedException('\antonienko\PhpTempPrev\Exceptions\InvalidFileException');
+        $this->sut->render('sdkfdsj', new IniFileStrategy(['nonExistingFile']));
     }
 
     public function test_render_withoutSettingValues_callStrategyWithEmptyArray()

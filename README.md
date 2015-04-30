@@ -17,6 +17,10 @@ and tell me.
 You can make a request for any framework that you want to use this library into, or even better, make a __pull request with your own framework strategy__.
 Just implement the [IFrameworkStrategy interface](lib/antonienko/PhpTempPrev/FrameworkStrategies/IFrameworkStrategy.php). Use the files under the [FrameworkStrategies folder](lib/antonienko/PhpTempPrev/FrameworkStrategies) as an example.
 
+##What's new
+### v0.2.0
+* Added Json file support for the variable files
+
 ##Installation
 ###Composer
 This library is available in packagist.org, you can add it to your project
@@ -31,12 +35,12 @@ Always up to date (bleeding edge, API *not* guaranteed stable)
 
 Specific minor version, API stability
 ```javascript
-"antonienko/php-template-previewer": "0.1.*"
+"antonienko/php-template-previewer": "0.2.*"
 ```
 
 If you have any problems with the _minimum-stability_ setting try appending @dev to the version
 ```javascript
-"antonienko/php-template-previewer": "0.1.*@dev"
+"antonienko/php-template-previewer": "0.2.*@dev"
 ```
 
 
@@ -48,6 +52,7 @@ You would call the url like this: `http://localhost/designTest/view/controllerna
 ```php
 namespace app\controllers;
 use antonienko\PhpTempPrev\FrameworkStrategies\PhalconStrategy;
+use antonienko\PhpTempPrev\FileStrategies\IniFileStrategy;
 use antonienko\PhpTempPrev\Previewer;
 
 class DesignTestController extends ControllerBase
@@ -57,17 +62,17 @@ class DesignTestController extends ControllerBase
         $view_variables_file = APP_PATH . 'templateHelpers/' . $controller . '/' . $view . '.ini';
         $layout_variables_file = APP_PATH . 'templateHelpers/general.ini';
         $previewer = new Previewer(new PhalconStrategy($this->view));
-        $previewer->render("$controller/$view", [$layout_variables_file, $view_variables_file]);
+        $previewer->render("$controller/$view", new IniFileStrategy([$layout_variables_file, $view_variables_file]));
     }
 }
 ```
 
-### Ini files
-You can pass a single .ini file holding your variables, or an array of files. In case of having the same variable defined in two of the .ini files, the last one will prevail.
+### Var files
+You pass to the render a class implementing `IFileStrategy` initialized with an array of _var files_. In case of having the same variable defined in two of the _var files_, the last one will prevail.
 
-The variables are separated in three categories: _scalars_, _arrays_ and _objects_. _arrays_ and _objects_ are represented in json format.
+The variables are separated in three categories: _scalars_, _arrays_ and _objects_.
 
-If you want to get an idea of how the .ini files work [take a look at the test fixtures](tests/antonienko/tests/fixtures).
+If you want to get an idea of how the _var files_ work [take a look at the test fixtures](tests/antonienko/tests/fixtures).
 
 ##License Information
 Lincensed under __The MIT License (MIT)__. See the LICENSE file for more details.
