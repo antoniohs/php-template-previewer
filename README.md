@@ -8,7 +8,7 @@ Originally created for a personal project using the Phalcon PHP framework and it
 
 ####Disclaimer:
 This is my first composer as well as open source project, so if you see anything that needs improving, don't hesitate
-and tell me.
+and tell me. Read my [introduction post](http://www.antoniohs.com/2015/04/29/php-template-previewer-improving-the-workflow-between-web-designers-and-coders/)
 
 ##List of implemented frameworks
 * Phalcon
