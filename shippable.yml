@@ -15,7 +15,8 @@ before_install:
 before_script:
   - mkdir -p shippable/codecoverage
   - mkdir -p shippable/testresults
-  - git clone --depth=1 git://github.com/phalcon/cphalcon.git && cd cphalcon/build && ./install && cd ../.. && echo 'extension="phalcon.so"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini;
+  - if [ ! -d "cphalcon" ]; then git clone --depth=1 git://github.com/phalcon/cphalcon.git; fi
+  - cd cphalcon/build && ./install && cd ../.. && echo 'extension="phalcon.so"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini;
   - /home/shippable/.phpenv/versions/5.6/composer/composer.phar self-update
   - composer install --prefer-source --no-interaction
 
