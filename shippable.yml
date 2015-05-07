@@ -21,6 +21,6 @@ before_script:
   - composer install --prefer-source --no-interaction
 
 script:
- - phpunit --log-junit shippable/testresults/junit.xml --coverage-html shippable/codecoverage --configuration phpunit.xml.dist
+ - phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage --configuration phpunit.xml.dist
 
 cache: true
