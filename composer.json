@@ -3,6 +3,7 @@
   "type": "library",
   "description": "For designers testing their framework views without the working backend code.",
   "keywords": ["framework", "template", "preview"],
+  "homepage": "http://www.antoniohs.com/2015/04/29/php-template-previewer-improving-the-workflow-between-web-designers-and-coders/",
   "license": "MIT",
   "authors": [
     {
